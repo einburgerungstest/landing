@@ -65,3 +65,4 @@ This theme can also be deployed on any static site hosting service that supports
 - Any static hosting provider
 
 Follow the hosting provider's instructions for deploying an Astro project.
+# GitHub Pages deployment test
