@@ -54,7 +54,7 @@ This project is configured for automatic deployment to GitHub Pages:
 2. **Push to main**: The site will automatically deploy when you push to the main branch
 3. **Manual deployment**: You can also trigger deployment manually from the Actions tab
 
-The site will be available at: `https://einburgerungstest.github.io/landing`
+The site will be available at: `https://einburgerungstest.github.io`
 
 ### Other Hosting Services
 
