@@ -23,7 +23,7 @@ To begin using this theme for your mobile app landing page, we recommend taking 
 
 ### Content
 
-Edit the frontmatter section at the top of `/src/pages/index.html` to update the website content, including text and images.
+Edit the frontmatter section at the top of `/src/pages/index.astro` to update the website content, including text and images.
 
 ### Styles
 
@@ -31,7 +31,7 @@ All CSS is located in `/src/styles/main.css`. Modify this file to change the loo
 
 ### Images
 
-Replace images by uploading new ones to the `/public/images` folder and update the references in the frontmatter of `index.html`.
+Replace images by uploading new ones to the `/public/images` folder and update the references in the frontmatter of `index.astro`.
 
 ### Fonts
 
@@ -39,13 +39,29 @@ Add new font files to `/public/fonts` and reference them in `/src/styles/main.cs
 
 ## Project Structure
 
-- `/src/pages/index.html`: The main HTML file for your landing page.
+- `/src/pages/index.astro`: The main Astro file for your landing page.
 - `/src/styles/main.css`: CSS file for styling your landing page.
 - `/public/images`: Directory for storing images.
 - `/public/fonts`: Directory for storing fonts.
 
 ## Deployment
 
-This theme can be deployed on any static site hosting service that supports Astro. Follow the hosting provider's instructions for deploying an Astro project.
+### GitHub Pages (Recommended)
 
-To view a live version of this site, see https://partybanner.app.
+This project is configured for automatic deployment to GitHub Pages:
+
+1. **Enable GitHub Pages**: In your repository settings, go to "Pages" and set the source to "GitHub Actions"
+2. **Push to main**: The site will automatically deploy when you push to the main branch
+3. **Manual deployment**: You can also trigger deployment manually from the Actions tab
+
+The site will be available at: `https://einburgerungstest.github.io/landing`
+
+### Other Hosting Services
+
+This theme can also be deployed on any static site hosting service that supports Astro:
+- Netlify
+- Vercel  
+- Cloudflare Pages
+- Any static hosting provider
+
+Follow the hosting provider's instructions for deploying an Astro project.

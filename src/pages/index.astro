@@ -42,6 +42,16 @@ const favicon = "/images/favicon.svg";
           <img src={appIcon} class="app-icon" alt="App Icon" />
           <h1 class="heading">{heading}</h1>
           <h2 class="subheading">{subheading}</h2>
+          <div class="features">
+            <ul class="features-list">
+              <li>✅ Official German citizenship test questions</li>
+              <li>🌍 Multi-language support (German & Russian)</li>
+              <li>📚 Detailed explanations for each question</li>
+              <li>🎯 Smart practice modes and progress tracking</li>
+              <li>⏱️ Test simulation with timer</li>
+              <li>📱 Modern iOS native interface</li>
+            </ul>
+          </div>
           <div class="badge-container">
             {badges.map(badge => (
               <a href={badge.link} target="_blank">
