@@ -4,5 +4,12 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: 'https://einburgerungstest.github.io',
   base: '/landing',
-  output: 'static'
+  output: 'static',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'de', 'ru'],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  }
 });

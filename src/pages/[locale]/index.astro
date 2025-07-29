@@ -1,0 +1,15 @@
+---
+import Layout from '../../components/Layout.astro';
+import type { Locale } from '../../lib/translations';
+
+export async function getStaticPaths() {
+  return [
+    { params: { locale: 'de' } },
+    { params: { locale: 'ru' } }
+  ];
+}
+
+const { locale } = Astro.params;
+---
+
+<Layout locale={locale as Locale} /> 

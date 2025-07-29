@@ -1,0 +1,65 @@
+---
+import { localeNames, getLocalizedPath } from '../lib/i18n';
+import type { Locale } from '../lib/translations';
+
+// Extract current locale from params or URL
+const currentLocale = Astro.params.locale || 'en';
+// Get the current page path without locale prefix and base
+let currentPath = Astro.url.pathname;
+const base = import.meta.env.BASE_URL || '';
+
+// Remove base path first
+if (base && currentPath.startsWith(base)) {
+  currentPath = currentPath.slice(base.length);
+}
+
+// Remove locale prefix if present
+currentPath = currentPath.replace(/^\/[a-z]{2}(?=\/|$)/, '') || '/';
+---
+
+<div class="language-switcher">
+  {Object.entries(localeNames).map(([locale, name]) => (
+    <a
+      href={getLocalizedPath(currentPath, locale as Locale, base)}
+      class={currentLocale === locale ? 'active' : ''}
+      aria-label={`Switch to ${name}`}
+    >
+      {name}
+    </a>
+  ))}
+</div>
+
+<style>
+  .language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .language-switcher a {
+    padding: 0.25rem 0.5rem;
+    text-decoration: none;
+    color: #666;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+  }
+
+  .language-switcher a:hover {
+    background-color: #f5f5f5;
+    color: #333;
+  }
+
+  .language-switcher a.active {
+    background-color: #007acc;
+    color: white;
+    border-color: #007acc;
+  }
+
+  @media (max-width: 768px) {
+    .language-switcher {
+      justify-content: center;
+    }
+  }
+</style> 

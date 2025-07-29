@@ -1,0 +1,91 @@
+---
+import '../styles/main.css'
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getTranslations, type Locale } from '../lib/translations';
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+const base = import.meta.env.BASE_URL || '';
+
+const appIcon = `${base}/images/app-icon.png`;
+const appScreenshot = `${base}/images/app-screenshot.png`;
+
+const badges = [
+  {
+    link: "https://apps.apple.com/app/idXXXXXXXX", // Replace with your app link
+    image: `${base}/images/app-store-badge.svg`
+  }
+];
+
+const authors = [
+  {
+    name: "Evgenii Sukhanov",
+    url: "mailto:einburgerung.app@gmail.com"
+  },
+  {
+    name: "Veronika Gainetdinova",
+    url: "mailto:einburgerung.app@gmail.com"
+  }
+];
+
+const favicon = `${base}/images/favicon.svg`;
+---
+
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={t.metaDescription} />
+    <title>{t.pageTitle}</title>
+  </head>
+  <body>
+    <div class="container">
+      <LanguageSwitcher />
+      <main>
+        <div class="text-container">
+          <img src={appIcon} class="app-icon" alt="App Icon" />
+          <h1 class="heading">{t.heading}</h1>
+          <h2 class="subheading">{t.subheading}</h2>
+          <div class="features">
+            <ul class="features-list">
+              {t.features.map(feature => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="badge-container">
+            {badges.map(badge => (
+              <a href={badge.link} target="_blank">
+                <img src={badge.image} class="badge" alt="Store Badge" />
+              </a>
+            ))}
+          </div>
+          <p class="authors">
+            {t.madeWith}{" "}
+            {authors.map((author, index) => (
+              <span>
+                {index > 0 ? (index === authors.length - 1 ? ` ${t.and} ` : ", ") : ""}
+                <a href={author.url} target="_blank">{author.name}</a>
+              </span>
+            ))}
+          </p>
+        </div>
+        <div>
+          <img src={appScreenshot} class="app-screenshot" alt="App Screenshot" />
+        </div>
+      </main>
+      <footer class="footer">
+        <p class="footer-links">
+          <a href={`${base}/privacy-policy`}>{t.footerLinks.privacyPolicy}</a>
+          <span class="divider">|</span>
+          <a href="mailto:einburgerung.app@gmail.com">{t.footerLinks.support}</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html> 
