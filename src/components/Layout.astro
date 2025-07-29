@@ -1,6 +1,5 @@
 ---
 import '../styles/main.css'
-import LanguageSwitcher from './LanguageSwitcher.astro';
 import { getTranslations, type Locale } from '../lib/translations';
 
 export interface Props {
@@ -45,7 +44,6 @@ const favicon = `${base}/images/favicon.svg`;
   </head>
   <body>
     <div class="container">
-      <LanguageSwitcher />
       <main>
         <div class="text-container">
           <img src={appIcon} class="app-icon" alt="App Icon" />
